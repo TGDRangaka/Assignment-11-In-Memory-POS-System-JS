@@ -50,10 +50,12 @@ $("#cus-update").on('click', () => {
 
     loadCustomerTable();
     $("#cus-reset").click();
+    row_index = null;
 });
 
 //remove
 $("#cus-delete").on('click', () => {
+    if (row_index == null) return;
     customers.splice(row_index, 1);
     loadCustomerTable();
     $("#cus-reset").click();
