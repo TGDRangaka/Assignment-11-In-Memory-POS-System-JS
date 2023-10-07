@@ -191,23 +191,31 @@
         <div class="row mb-3">
             <div class="col container customer-pane">
                 <div class="row"><h2>Customer Details</h2></div>
-
                 <form action="" class="row">
                     <div class="mb-3 col-lg-2 col-md-4 col-12">
-                        <label for="OrderCusId" class="form-label">Customer ID</label>
-                        <input type="text" class="form-control black-border-1" id="OrderCusId" placeholder="C001">
+                        <label for="orderCusId" class="form-label">Customer ID</label>
+                        <div class="dropdown" id="orderCusId">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="cusDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                000
+                            </button>
+                            <div id="cusDropdown" class="dropdown-menu" aria-labelledby="cusDropdownMenuButton">
+                                <a class="dropdown-item" href="#">Action</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 col-lg-4 col-md-8 col-12">
+                        <label for="orderCusName" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control black-border-1" id="orderCusName">
                     </div>
                     <div class="mb-3 col-lg-4 col-md-8 col-12">
-                        <label for="OrderCusName" class="form-label">Customer Name</label>
-                        <input type="text" class="form-control black-border-1" id="OrderCusName">
-                    </div>
-                    <div class="mb-3 col-lg-4 col-md-8 col-12">
-                        <label for="OrderCusAddress" class="form-label">Address</label>
-                        <input type="text" class="form-control black-border-1" id="OrderCusAddress">
+                        <label for="orderCusAddress" class="form-label">Address</label>
+                        <input type="text" class="form-control black-border-1" id="orderCusAddress">
                     </div>
                     <div class="mb-3 col-lg-2 col-md-4 col-12">
-                        <label for="OrderCusSalary" class="form-label">Salary</label>
-                        <input type="number" class="form-control black-border-1" id="OrderCusSalary" placeholder="Rs: 000000.00">
+                        <label for="orderCusSalary" class="form-label">Salary</label>
+                        <input type="number" class="form-control black-border-1" id="orderCusSalary" placeholder="Rs: 000000.00">
                     </div>
                 </form>
             </div>
@@ -219,19 +227,26 @@
                 <form action="" class="row">
                     <div class="mb-3 col-lg-2 col-md-4">
                         <label for="OrderItemId" class="form-label">Item ID</label>
-                        <input type="text" class="form-control black-border-1" id="OrderItemId" placeholder="I001">
+                        <div class="dropdown" id="orderItemId">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="itemDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                000
+                            </button>
+                            <div id="itemDropdown" class="dropdown-menu" aria-labelledby="itemDropdownMenuButton">
+                                <li>Home</li>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3 col-lg-6 col-md-8">
-                        <label for="OrderItemName" class="form-label">Item Name</label>
-                        <input type="text" class="form-control black-border-1" id="OrderItemName">
+                        <label for="orderItemName" class="form-label">Item Name</label>
+                        <input type="text" class="form-control black-border-1" id="orderItemName">
                     </div>
                     <div class="mb-3 col-lg-4 col-md-6">
-                        <label for="OrderItemPrice" class="form-label">Price</label>
-                        <input type="number" class="form-control black-border-1" id="OrderItemPrice" placeholder="Rs: 0000.00">
+                        <label for="orderItemPrice" class="form-label">Price</label>
+                        <input type="number" class="form-control black-border-1" id="orderItemPrice" placeholder="Rs: 0000.00">
                     </div>
                     <div class="mb-3 col-lg-4 col-md-3">
-                        <label for="OrderItemQty" class="form-label">Qty</label>
-                        <input type="number" class="form-control black-border-1" id="OrderItemQty" placeholder="00">
+                        <label for="orderItemQty" class="form-label">Qty</label>
+                        <input type="number" class="form-control black-border-1" id="orderItemQty" placeholder="00">
                     </div>
                     <div class="mb-3 col-lg-4 col-md-3">
                         <label for="qty-on-hand" class="form-label">Qty on hand</label>
@@ -307,9 +322,14 @@
         </div>
     </section>
 
-    <script src="assests/jquerry/jquery.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <script type="module" src="controller/customerController.js"></script>
     <script type="module" src="controller/itemController.js"></script>
+    <script type="module" src="controller/orderController.js"></script>
     <script>
 
         const displayNoneSections = () => {
