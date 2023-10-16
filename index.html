@@ -336,40 +336,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+    <script src="controller/indexController.js"></script>
     <script type="module" src="controller/customerController.js"></script>
     <script type="module" src="controller/itemController.js"></script>
     <script type="module" src="controller/orderController.js"></script>
-    <script>
-
-        const displayNoneSections = () => {
-            $("#dashboard-section").css("display", "none");
-            $("#customer-section").css("display", "none");
-            $("#item-section").css("display", "none");
-            $("#order-section").css("display", "none");
-        }
-
-        displayNoneSections();
-        $("#dashboard-section").css("display", "block");
-
-        $("#dashboard").on('click', () => {
-            displayNoneSections();
-            $("#dashboard-section").css("display", "block");
-        });
-
-        $("#customer").on('click', () => {
-            displayNoneSections();
-            $("#customer-section").css("display", "block");
-        });
-
-        $("#item").on('click', () => {
-            displayNoneSections();
-            $("#item-section").css("display", "block");
-        });
-
-        $("#order").on('click', () => {
-            displayNoneSections();
-            $("#order-section").css("display", "block");
-        });
-    </script>
 </body>
 </html>
