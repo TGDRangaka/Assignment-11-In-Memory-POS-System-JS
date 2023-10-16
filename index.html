@@ -201,18 +201,11 @@
             <div class="col container customer-pane">
                 <div class="row"><h2>Customer Details</h2></div>
                 <form action="" class="row">
-                    <div class="mb-3 col-lg-2 col-md-4 col-12">
+                    <div id="customerSelector" class="mb-3 col-lg-2 col-md-4 col-12">
                         <label for="orderCusId" class="form-label">Customer ID</label>
-                        <div class="dropdown" id="orderCusId">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="cusDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                000
-                            </button>
-                            <div id="cusDropdown" class="dropdown-menu" aria-labelledby="cusDropdownMenuButton">
-                                <a class="dropdown-item" href="#">Action</a>
-                            </div>
-                        </div>
+                        <select id="orderCusId" class="form-select" aria-label="Default select example">
+                        </select>
                     </div>
-
 
                     <div class="mb-3 col-lg-4 col-md-8 col-12">
                         <label for="orderCusName" class="form-label">Customer Name</label>
@@ -234,16 +227,10 @@
             <div class="col-lg-6 col-12 container item-pane mb-3">
                 <div class="row"><h2>Item Details</h2></div>
                 <form action="" class="row">
-                    <div class="mb-3 col-lg-2 col-md-4">
+                    <div id="itemSelector" class="mb-3 col-lg-2 col-md-4">
                         <label for="OrderItemId" class="form-label">Item ID</label>
-                        <div class="dropdown" id="orderItemId">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="itemDropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                000
-                            </button>
-                            <div id="itemDropdown" class="dropdown-menu" aria-labelledby="itemDropdownMenuButton">
-                                <li>Home</li>
-                            </div>
-                        </div>
+                        <select id="OrderItemId" class="form-select" aria-label="Default select example">
+                        </select>
                     </div>
                     <div class="mb-3 col-lg-6 col-md-8">
                         <label for="orderItemName" class="form-label">Item Name</label>

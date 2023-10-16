@@ -26,34 +26,31 @@ const loadAddItemTable = ()=>{
 }
 
 //loadCustomers
-$("#orderCusId>button").on('click', ()=> {
-    $("#cusDropdown").html(" ");
+$("#orderCusId").on('click', ()=>{
+    $("#orderCusId").html("");
     customers.map((customer) => {
-        $("#cusDropdown").append(`<a class="dropdown-item" href="#"> ${customer.id} </a>`);
+        $("#orderCusId").append(`<option value="${customer.id}"> ${customer.id} </option>`);
     });
 });
 
 //setCustomerDetails
-$("#cusDropdown").on('click', "a", function(){
-    $("#orderCusId>button").text($(this).text())
-    cusRowIndex = customers.findIndex(customer => customer.id == Number.parseInt($(this).text()));
-
+$("#customerSelector").on('click', 'select', function (){
+    cusRowIndex = customers.findIndex(customer => customer.id == Number.parseInt($(this).val()));
     $("#orderCusName").val( customers[cusRowIndex].name );
     $("#orderCusAddress").val( customers[cusRowIndex].address );
     $("#orderCusSalary").val( customers[cusRowIndex].salary );
 });
 
 //loadItems
-$("#orderItemId>button").on('click', ()=> {
-    $("#itemDropdown").html(" ");
+$("#OrderItemId").on('click', ()=> {
+    $("#OrderItemId").html("");
     items.map((item) => {
-        $("#itemDropdown").append(`<a class="dropdown-item" href="#"> ${item.id} </a>`);
+        $("#OrderItemId").append(`<option value="${item.id}"> ${item.id} </option>`);
     });
 });
 
 //setItemDetails
-$("#itemDropdown").on('click', "a", function(){
-    $("#orderItemId>button").text($(this).text())
+$("#itemSelector").on('click', 'select', function (){
     itemRowIndex = items.findIndex(item => item.id == Number.parseInt($(this).text()));
 
     $("#orderItemName").val( items[itemRowIndex].name );
@@ -63,7 +60,8 @@ $("#itemDropdown").on('click', "a", function(){
 
 //add-item action
 $("#add-item-btn").on('click', ()=>{
-    let id = $("#orderItemId>button").text(),
+    console.log($("#orderItemId:selected").val());
+    let id = $("#orderItemId").val(),
         name = $("#orderItemName").val(),
         price = Number.parseFloat($("#orderItemPrice").val()),
         qty = Number.parseInt($("#orderItemQty").val()),
