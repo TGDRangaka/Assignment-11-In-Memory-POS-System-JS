@@ -29,13 +29,13 @@ const loadAddItemTable = ()=>{
 $("#orderCusId").on('click', ()=>{
     $("#orderCusId").html("");
     customers.map((customer) => {
-        $("#orderCusId").append(`<option value="${customer.id}"> ${customer.id} </option>`);
+        $("#orderCusId").append(`<option value="${customer.id}">${customer.id}</option>`);
     });
 });
 
 //setCustomerDetails
 $("#customerSelector").on('click', 'select', function (){
-    cusRowIndex = customers.findIndex(customer => customer.id == Number.parseInt($(this).val()));
+    cusRowIndex = customers.findIndex(customer => customer.id === $(this).val());
     if(cusRowIndex) return;
     $("#orderCusName").val( customers[cusRowIndex].name );
     $("#orderCusAddress").val( customers[cusRowIndex].address );
@@ -46,13 +46,13 @@ $("#customerSelector").on('click', 'select', function (){
 $("#orderItemId").on('click', ()=> {
     $("#orderItemId").html("");
     items.map((item) => {
-        $("#orderItemId").append(`<option value="${item.id}"> ${item.id} </option>`);
+        $("#orderItemId").append(`<option value="${item.id}">${item.id}</option>`);
     });
 });
 
 //setItemDetails
 $("#itemSelector").on('click', 'select', function (){
-    itemRowIndex = items.findIndex(item => item.id == Number.parseInt($(this).text()));
+    itemRowIndex = items.findIndex(item => item.id === $(this).text());
     if(itemRowIndex) return;
     $("#orderItemName").val( items[itemRowIndex].name );
     $("#orderItemPrice").val( items[itemRowIndex].price );

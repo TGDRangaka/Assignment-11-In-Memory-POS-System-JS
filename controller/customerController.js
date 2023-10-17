@@ -147,3 +147,7 @@ function generateNewId(lastId) {
     const newId = "C" + newNumber.toString().padStart(3, "0");
     return newId;
 }
+
+$("#cus-reset").on('click', ()=>{
+    setTimeout(loadId, 10);
+})

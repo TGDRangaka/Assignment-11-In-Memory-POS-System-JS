@@ -33,6 +33,13 @@ $("#item-save").on('click', () => {
     loadItemTable();
     $("#item-reset").click();
     loadId();
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Item has been saved',
+        showConfirmButton: false,
+        timer: 1500
+    })
 });
 
 //search
@@ -65,15 +72,39 @@ $("#item-update").on('click', () => {
     $("#item-reset").click();
     row_index = null;
     loadId();
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Item has been updated',
+        showConfirmButton: false,
+        timer: 1500
+    })
 });
 
 //remove
 $("#item-delete").on('click', () => {
     if (row_index == null) return;
-    items.splice(row_index, 1);
-    loadItemTable();
-    $("#item-reset").click();
-    loadId();
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            items.splice(row_index, 1);
+            loadItemTable();
+            $("#item-reset").click();
+            loadId();
+            Swal.fire(
+                'Deleted!',
+                'Item has been deleted.',
+                'success'
+            )
+        }
+    })
 });
 
 //validation
@@ -114,3 +145,7 @@ function generateNewId(lastId) {
     const newId = "I" + newNumber.toString().padStart(3, "0");
     return newId;
 }
+
+$("#item-reset").on('click', ()=>{
+    setTimeout(loadId, 10);
+})
