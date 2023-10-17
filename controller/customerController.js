@@ -117,15 +117,15 @@ function checkValidation(id, name, address, salary){
         return false;
     }
     if(!name){ //check name
-        showErrorAlert("Please enter the name!");
+        showErrorAlert("Please enter a valid name!");
         return false;
     }
     if(!address){ //check address
-        showErrorAlert("Please enter the address!");
+        showErrorAlert("Please enter a valid address!");
         return false;
     }
     if(!/^\d+(\.\d{1,2})?$/.test(salary.toString())){ //check salary
-        showErrorAlert("Please enter the salary");
+        showErrorAlert("Please enter a valid salary");
         return false;
     }
     return true;

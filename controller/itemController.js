@@ -1,32 +1,43 @@
 import {Item} from "../model/item.js";
-import {items} from "../db/db_arrays.js";
+import {customers, items} from "../db/db_arrays.js";
 
 let row_index = null;
+const loadId = () =>{
+    if(items.length == 0){
+        $("#itemId").val("I001");
+    }else{
+        $("#itemId").val(generateNewId(items[items.length - 1].id));
+    }
+};
 
+loadId();
 const loadItemTable = () => {
     $("#itemTable").html("");
     items.map((item) => {
-        $("#itemTable").append(`<tr><td> ${item.id} </td><td> ${item.name} </td><td> ${item.price} </td><td> ${item.qty} </td></tr>`);
+        $("#itemTable").append(`<tr><td>${item.id}</td><td>${item.name}</td><td>${item.price}</td><td>${item.qty}</td></tr>`);
     });
 };
 
 //save
 $("#item-save").on('click', () => {
-    let id = Number.parseInt($("#itemId").val()),
+    let id = $("#itemId").val(),
         name = $("#itemName").val(),
         price = Number.parseFloat($("#itemPrice").val()),
         qty = Number.parseInt($("#itemQty").val());
+
+    if(!checkValidation(id, name, price, qty)) return;
 
     let item = new Item(id, name, price, qty);
     items.push(item);
 
     loadItemTable();
     $("#item-reset").click();
+    loadId();
 });
 
 //search
 $("#itemTable").on('click', "tr", function(){
-    let selectedId = Number.parseInt( $(this).find("td:nth-child(1)").text() );
+    let selectedId = $(this).find("td:nth-child(1)").text();
 
     $("#itemId").val( selectedId );
     $("#itemName").val( $(this).find("td:nth-child(2)").text() );
@@ -38,10 +49,12 @@ $("#itemTable").on('click', "tr", function(){
 
 //update
 $("#item-update").on('click', () => {
-    let id = Number.parseInt($("#itemId").val()),
+    let id = $("#itemId").val(),
         name = $("#itemName").val(),
         price = Number.parseFloat($("#itemPrice").val()),
         qty = Number.parseInt($("#itemQty").val());
+
+    if(!checkValidation(id, name, price, qty)) return;
 
     items[row_index].id = id;
     items[row_index].name = name;
@@ -51,6 +64,7 @@ $("#item-update").on('click', () => {
     loadItemTable();
     $("#item-reset").click();
     row_index = null;
+    loadId();
 });
 
 //remove
@@ -59,4 +73,44 @@ $("#item-delete").on('click', () => {
     items.splice(row_index, 1);
     loadItemTable();
     $("#item-reset").click();
+    loadId();
 });
+
+//validation
+function checkValidation(id, name, price, qty){
+    console.log(id);
+    if(!/^I\d{3}$/.test(id)){ //chekc ID
+        showErrorAlert("Please enter a valid ID!")
+        return false;
+    }
+    if(!name){ //check name
+        showErrorAlert("Please enter a name!");
+        return false;
+    }
+    if(!/^\d+(\.\d{1,2})?$/.test(price.toString())){ //check address
+        showErrorAlert("Please enter a price for item!");
+        return false;
+    }
+    if(!qty || qty == 0){ //check salary
+        showErrorAlert("Please enter a quantity");
+        return false;
+    }
+    return true;
+}
+
+//showErrorAlert
+function showErrorAlert(message){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: message,
+    });
+}
+
+//generateNewID
+function generateNewId(lastId) {
+    const lastNumber = parseInt(lastId.slice(1), 10);
+    const newNumber = lastNumber + 1;
+    const newId = "I" + newNumber.toString().padStart(3, "0");
+    return newId;
+}
