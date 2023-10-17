@@ -36,23 +36,24 @@ $("#orderCusId").on('click', ()=>{
 //setCustomerDetails
 $("#customerSelector").on('click', 'select', function (){
     cusRowIndex = customers.findIndex(customer => customer.id == Number.parseInt($(this).val()));
+    if(cusRowIndex) return;
     $("#orderCusName").val( customers[cusRowIndex].name );
     $("#orderCusAddress").val( customers[cusRowIndex].address );
     $("#orderCusSalary").val( customers[cusRowIndex].salary );
 });
 
 //loadItems
-$("#OrderItemId").on('click', ()=> {
-    $("#OrderItemId").html("");
+$("#orderItemId").on('click', ()=> {
+    $("#orderItemId").html("");
     items.map((item) => {
-        $("#OrderItemId").append(`<option value="${item.id}"> ${item.id} </option>`);
+        $("#orderItemId").append(`<option value="${item.id}"> ${item.id} </option>`);
     });
 });
 
 //setItemDetails
 $("#itemSelector").on('click', 'select', function (){
     itemRowIndex = items.findIndex(item => item.id == Number.parseInt($(this).text()));
-
+    if(itemRowIndex) return;
     $("#orderItemName").val( items[itemRowIndex].name );
     $("#orderItemPrice").val( items[itemRowIndex].price );
     $("#qty-on-hand").val( items[itemRowIndex].qty );
@@ -60,7 +61,6 @@ $("#itemSelector").on('click', 'select', function (){
 
 //add-item action
 $("#add-item-btn").on('click', ()=>{
-    console.log($("#orderItemId:selected").val());
     let id = $("#orderItemId").val(),
         name = $("#orderItemName").val(),
         price = Number.parseFloat($("#orderItemPrice").val()),

@@ -8,22 +8,46 @@ const displayNoneSections = () => {
 displayNoneSections();
 $("#dashboard-section").css("display", "block");
 
-$("#dashboard").on('click', () => {
+$(".dashboard").on('click', () => {
     displayNoneSections();
+    $("#sectionName").text("Dashboard");
     $("#dashboard-section").css("display", "block");
 });
 
-$("#customer").on('click', () => {
+$(".customer").on('click', () => {
     displayNoneSections();
+    $("#sectionName").text("Customer Manage");
     $("#customer-section").css("display", "block");
 });
 
-$("#item").on('click', () => {
+$(".item").on('click', () => {
     displayNoneSections();
+    $("#sectionName").text("Item Manage");
     $("#item-section").css("display", "block");
 });
 
-$("#order").on('click', () => {
+$(".order").on('click', () => {
     displayNoneSections();
+    $("#sectionName").text("Place Orders");
     $("#order-section").css("display", "block");
 });
+
+let mobNavOpened = false;
+$(".mob-nav-menu").on('click', ()=>{
+    if(mobNavOpened){
+        mobNavOpened = false;
+        $(".mob-nav-btns").css("right", "-100vw");
+    }else{
+        mobNavOpened = true;
+        $(".mob-nav-btns").css("right", 0);
+    }
+});
+
+$(".mob-nav-btns i").on('click', ()=>{
+    $(".mob-nav-btns").css("right", "-100vw");
+});
+
+$("section").on('click', ()=>{
+    mobNavOpened = false;
+    $(".mob-nav-btns").css("right", "-100vw");
+})

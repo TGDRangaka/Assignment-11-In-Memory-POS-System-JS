@@ -13,29 +13,40 @@
 <body>
 
     <nav id="nav_bar" class="navbar bg-body-tertiary mb-5">
+        <h1 id="sectionName">Dashboard</h1>
         <div class="container-fluid">
             <a class="navbar-brand" href="index.html">
               <img src="assests/logo.png" alt="Logo" class="d-inline-block align-text-top">
             </a>
             <ul class="nav nav-underline">
                 <li id="aaa" class="nav-item">
-                  <a id="dashboard" class="nav-link">Dashboard</a>
+                  <a  class="nav-link dashboard">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                  <a id="customer" class="nav-link">Customer</a>
+                  <a  class="nav-link customer">Customer</a>
                 </li>
                 <li class="nav-item">
-                  <a id="item" class="nav-link">Item</a>
+                  <a  class="nav-link item">Item</a>
                 </li>
                 <li class="nav-item">
-                  <a id="order" class="nav-link">Order</a>
+                  <a  class="nav-link order">Order</a>
                 </li>
             </ul>
+            <div class="mob-nav">
+                <span class="mob-nav-menu"><i class="fa-solid fa-bars"></i></span>
+                <div class="mob-nav-btns">
+                    <a  class="nav-link dashboard">Dashboard</a>
+                    <a  class="nav-link customer">Customer</a>
+                    <a  class="nav-link item">Item</a>
+                    <a  class="nav-link order">Order</a>
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
         </div>
     </nav>
 
     <!--  Dashboard Section  -->
-    <section id="dashboard-section" class="container">
+    <section id="dashboard-section" class="">
 
         <div class="row">
 
@@ -75,7 +86,7 @@
     </section>
 
     <!--  Customer Section-->
-    <section id="customer-section" class="container">
+    <section id="customer-section" class="">
 
         <div class="row justify-content-md-center mb-4">
             <div class="col col-lg-10 col-12">
@@ -203,7 +214,7 @@
                 <form action="" class="row">
                     <div id="customerSelector" class="mb-3 col-lg-2 col-md-4 col-12">
                         <label for="orderCusId" class="form-label">Customer ID</label>
-                        <select id="orderCusId" class="form-select" aria-label="Default select example">
+                        <select id="orderCusId" class="form-select black-border-1" aria-label="Default select example">
                         </select>
                     </div>
 
@@ -228,8 +239,8 @@
                 <div class="row"><h2>Item Details</h2></div>
                 <form action="" class="row">
                     <div id="itemSelector" class="mb-3 col-lg-2 col-md-4">
-                        <label for="OrderItemId" class="form-label">Item ID</label>
-                        <select id="OrderItemId" class="form-select" aria-label="Default select example">
+                        <label for="orderItemId" class="form-label">Item ID</label>
+                        <select id="orderItemId" class="form-select black-border-1" aria-label="Default select example">
                         </select>
                     </div>
                     <div class="mb-3 col-lg-6 col-md-8">
