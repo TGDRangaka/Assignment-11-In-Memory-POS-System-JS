@@ -1,4 +1,8 @@
+let mobNavOpened = false;
+
 const displayNoneSections = () => {
+    mobNavOpened = false;
+    $(".mob-nav-btns").css("right", "-100vw");
     $("#dashboard-section").css("display", "none");
     $("#customer-section").css("display", "none");
     $("#item-section").css("display", "none");
@@ -32,7 +36,6 @@ $(".order").on('click', () => {
     $("#order-section").css("display", "block");
 });
 
-let mobNavOpened = false;
 $(".mob-nav-menu").on('click', ()=>{
     if(mobNavOpened){
         mobNavOpened = false;
