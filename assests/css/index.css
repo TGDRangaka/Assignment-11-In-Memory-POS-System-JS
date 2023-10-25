@@ -188,3 +188,14 @@ table tbody, table thead {
         display: block;
     }
 }
+
+.fa-circle-info {
+    font-size: 20px;
+    color: #0078f1;
+    transition: .4s;
+}
+
+#order-history-section tr:hover .fa-circle-info {
+    transform: scale(1.3);
+    color: #419aff;
+}
