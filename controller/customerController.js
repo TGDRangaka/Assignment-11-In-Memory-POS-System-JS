@@ -19,6 +19,8 @@ const loadCustomerTable = () => {
     });
 };
 
+$(".customer").on('click', ()=> loadCustomerTable());
+
 //save
 $("#cus-save").on('click', () => {
     let id = $("#cusId").val(),
@@ -35,7 +37,6 @@ $("#cus-save").on('click', () => {
     $("#cus-reset").click();
     loadId();
     Swal.fire({
-        position: 'top-end',
         icon: 'success',
         title: 'Customer has been saved',
         showConfirmButton: false,
@@ -75,7 +76,6 @@ $("#cus-update").on('click', () => {
     loadId();
     row_index = null;
     Swal.fire({
-        position: 'top-end',
         icon: 'success',
         title: 'Customer has been updated',
         showConfirmButton: false,

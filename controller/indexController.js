@@ -7,6 +7,7 @@ const displayNoneSections = () => {
     $("#customer-section").css("display", "none");
     $("#item-section").css("display", "none");
     $("#order-section").css("display", "none");
+    $("#order-history-section").css("display", "none");
 }
 
 displayNoneSections();
@@ -34,6 +35,12 @@ $(".order").on('click', () => {
     displayNoneSections();
     $("#sectionName").text("Place Orders");
     $("#order-section").css("display", "block");
+});
+
+$(".order-history").on('click', () => {
+    displayNoneSections();
+    $("#sectionName").text("Order History");
+    $("#order-history-section").css("display", "block");
 });
 
 $(".mob-nav-menu").on('click', ()=>{

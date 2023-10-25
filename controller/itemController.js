@@ -18,6 +18,8 @@ const loadItemTable = () => {
     });
 };
 
+$(".item").on('click', ()=> loadItemTable());
+
 //save
 $("#item-save").on('click', () => {
     let id = $("#itemId").val(),
@@ -34,7 +36,6 @@ $("#item-save").on('click', () => {
     $("#item-reset").click();
     loadId();
     Swal.fire({
-        position: 'top-end',
         icon: 'success',
         title: 'Item has been saved',
         showConfirmButton: false,
@@ -73,7 +74,6 @@ $("#item-update").on('click', () => {
     row_index = null;
     loadId();
     Swal.fire({
-        position: 'top-end',
         icon: 'success',
         title: 'Item has been updated',
         showConfirmButton: false,
