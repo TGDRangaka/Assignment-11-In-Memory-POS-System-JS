@@ -56,14 +56,14 @@
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12 card mb-5">
                 <div class="card_body">
                     <h1 class="card_label mb-5">Registered Customers</h1>
-                    <h1 class="count">45</h1>
+                    <h1 id="regCusCount" class="count">0</h1>
                 </div>
             </div>
 
             <div class="col col-lg-6 col-md-6 col-sm-12 col-12 card mb-5">
                 <div class="card_body">
                     <h1 class="card_label mb-5">Available Items</h1>
-                    <h1 class="count">45</h1>
+                    <h1 id="availableItemCount" class="count">0</h1>
                 </div>
             </div>
 
@@ -74,7 +74,7 @@
             <div class="col col-lg-6 col-md-12 col-sm-12 col-12 card mb-5">
                 <div class="card_body">
                     <h1 class="card_label mb-5">Total Orders</h1>
-                    <h1 class="count">45</h1>
+                    <h1 id="totOrders" class="count">0</h1>
                 </div>
             </div>
 
@@ -361,7 +361,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="controller/indexController.js"></script>
+    <script type="module" src="controller/indexController.js"></script>
     <script type="module" src="controller/customerController.js"></script>
     <script type="module" src="controller/itemController.js"></script>
     <script type="module" src="controller/orderController.js"></script>

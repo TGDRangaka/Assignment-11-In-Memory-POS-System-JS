@@ -1,3 +1,7 @@
+import {customers} from "../db/db_arrays.js";
+import {items} from "../db/db_arrays.js";
+import {orders} from "../db/db_arrays.js";
+
 let mobNavOpened = false;
 
 const displayNoneSections = () => {
@@ -17,6 +21,7 @@ $(".dashboard").on('click', () => {
     displayNoneSections();
     $("#sectionName").text("Dashboard");
     $("#dashboard-section").css("display", "block");
+    loadDetails();
 });
 
 $(".customer").on('click', () => {
@@ -61,3 +66,10 @@ $("section").on('click', ()=>{
     mobNavOpened = false;
     $(".mob-nav-btns").css("right", "-100vw");
 })
+
+const loadDetails = ()=> {
+    $("#regCusCount").text(customers.length);
+    $("#availableItemCount").text(items.length);
+    $("#totOrders").text(orders.length);
+}
+
