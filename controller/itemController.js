@@ -17,6 +17,12 @@ const loadItemTable = () => {
         $("#itemTable").append(`<tr><td>${item.id}</td><td>${item.name}</td><td>${item.price}</td><td>${item.qty}</td></tr>`);
     });
 };
+const loadTable = (array) => {
+    $("#itemTable").html("");
+    array.map((item) => {
+        $("#itemTable").append(`<tr><td>${item.id}</td><td>${item.name}</td><td>${item.price}</td><td>${item.qty}</td></tr>`);
+    });
+};
 
 $(".item").on('click', ()=> loadItemTable());
 
@@ -27,6 +33,10 @@ $("#item-save").on('click', () => {
         price = Number.parseFloat($("#itemPrice").val()),
         qty = Number.parseInt($("#itemQty").val());
 
+    if(-1 != items.findIndex(item => item.id === id)){
+        showErrorAlert(`ID ${id} is already exist!`);
+        return;
+    }
     if(!checkValidation(id, name, price, qty)) return;
 
     let item = new Item(id, name, price, qty);
@@ -44,6 +54,18 @@ $("#item-save").on('click', () => {
 });
 
 //search
+$("#item-section .search").on('input', ()=>{
+    let text = $("#item-section .search").val();
+    console.log(text);
+    if(!text) {
+        loadItemTable();
+        return;
+    }
+    let tempItem = items.filter(item => item.id.includes(text) || item.name.includes(text));
+    loadTable(tempItem);
+})
+
+//select
 $("#itemTable").on('click', "tr", function(){
     let selectedId = $(this).find("td:nth-child(1)").text();
 

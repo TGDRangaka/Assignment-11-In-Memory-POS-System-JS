@@ -18,6 +18,12 @@ const loadCustomerTable = () => {
         $("#cusTable").append(`<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.salary}</td></tr>`);
     });
 };
+const loadTable = (array) => {
+    $("#cusTable").html("");
+    array.map((customer) => {
+        $("#cusTable").append(`<tr><td>${customer.id}</td><td>${customer.name}</td><td>${customer.address}</td><td>${customer.salary}</td></tr>`);
+    });
+};
 
 $(".customer").on('click', ()=> loadCustomerTable());
 
@@ -28,6 +34,10 @@ $("#cus-save").on('click', () => {
         address = $("#cusAddress").val(),
         salary = Number.parseFloat($("#cusSalary").val());
 
+    if(-1 != customers.findIndex(cus => cus.id === id)){
+        showErrorAlert(`ID ${id} is already exist!`);
+        return;
+    }
     if(!checkValidation(id, name, address, salary)) return;
 
     let customer = new Customer(id, name, address, salary);
@@ -45,6 +55,18 @@ $("#cus-save").on('click', () => {
 });
 
 //search
+$("#customer-section .search").on('input', ()=>{
+    let text = $("#customer-section .search").val();
+    console.log(text);
+    if(!text) {
+        loadCustomerTable();
+        return;
+    }
+    let tempCus = customers.filter(cus => cus.id.includes(text) || cus.name.includes(text) || cus.address.includes(text));
+    loadTable(tempCus);
+})
+
+//select
 $("#cusTable").on('click', "tr", function(){
     let selectedId = $(this).find("td:nth-child(1)").text();
 
